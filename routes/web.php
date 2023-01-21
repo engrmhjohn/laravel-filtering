@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductFilterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',[ProductFilterController::class,'index'])->name('/');
+Route::post('/new-product',[ProductFilterController::class,'saveProduct'])->name('new-product');
+Route::get('/all-product',[ProductFilterController::class,'allProduct'])->name('all-product');
+Route::get('/search-product',[ProductFilterController::class,'search_products'])->name('search.products');
+Route::get('/sort-by',[ProductFilterController::class,'sort_by'])->name('sort.by');
